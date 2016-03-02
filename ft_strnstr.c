@@ -6,7 +6,7 @@
 /*   By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:05:22 by jplevy            #+#    #+#             */
-/*   Updated: 2016/01/11 19:36:54 by jplevy           ###   ########.fr       */
+/*   Updated: 2016/03/02 14:37:56 by jplevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
 	size_t	length;
 
-	if (!s1 || !s2)
-		return (NULL);
 	if (*s2 == '\0')
 		return ((char *)s1);
 	length = ft_strlen(s2);

@@ -6,7 +6,7 @@
 /*   By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 11:24:28 by jplevy            #+#    #+#             */
-/*   Updated: 2016/01/13 12:06:01 by jplevy           ###   ########.fr       */
+/*   Updated: 2016/03/02 15:06:32 by jplevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char *s;
 
-	s = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
-	ft_strcat(s, s1);
-	ft_strcat(s, s2);
+	if ((s = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+	{
+		ft_strcat(s, s1);
+		ft_strcat(s, s2);
+	}
 	return (s);
 }

@@ -6,100 +6,71 @@
 /*   By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 12:22:51 by jplevy            #+#    #+#             */
-/*   Updated: 2016/01/15 19:11:30 by jplevy           ###   ########.fr       */
+/*   Updated: 2016/03/02 15:40:42 by jplevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t	ft_count_words(char const *s, char sep)
+static int		ft_nb_of_words(char const *s, char c)
 {
-	size_t	ret;
+	int i;
 
-	ret = 0;
-	while (s && *s)
+	i = 0;
+	while (*s)
 	{
-		if (*s == sep)
+		while (*s && *s == c)
 			s++;
-		if (*s != sep)
+		if (*s && *s != c)
 		{
-			ret++;
-			while (*s != sep)
+			i += 1;
+			while (*s && *s != c)
 				s++;
 		}
 	}
-	return (ret);
+	return (i);
 }
 
-static int		ft_word_size(char *s, char sep)
+static char		*ft_dup_word(char const *s, char c)
 {
-	int		i;
-	int		size;
-	int		inw;
-
-	i = 0;
-	inw = 0;
-	size = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] != sep && inw == 0)
-			inw = 1;
-		if (s[i] != sep && inw == 1)
-			size++;
-		if (s[i] == sep && inw == 1)
-			return (size);
-		i++;
-	}
-	return (size);
-}
-
-static char		*ft_write_word(char *str, char **nstr, char *tab, char c)
-{
-	int		inw;
+	char	*word;
+	int		len;
 	int		i;
 
-	inw = 0;
-	i = 0;
-	while (*str != '\0')
-	{
-		if (*str != c && inw == 0)
-			inw = 1;
-		if (*str != c && inw == 1)
-		{
-			tab[i] = *str;
-			i++;
-		}
-		if (*str == c && inw == 1)
-		{
-			tab[i] = '\0';
-			*nstr = str;
-			return (tab);
-		}
-		str++;
-	}
-	tab[i] = '\0';
-	*nstr = str;
-	return (tab);
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	if (!(word = (char *)malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	i = -1;
+	while (++i < len)
+		word[i] = s[i];
+	word[i] = '\0';
+	return (word);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
-	char	*str;
-	size_t	nw;
-	size_t	cw;
+	int		nb_of_w;
+	int		i;
 
-	nw = ft_count_words(s, c);
-	str = (char*)s;
-	tab = (char**)malloc(sizeof(char*) * (nw + 1));
-	cw = 0;
-	while (cw < nw)
+	if (!s || !c)
+		return (NULL);
+	nb_of_w = ft_nb_of_words(s, c);
+	if (!(tab = (char **)malloc(sizeof(char *) * nb_of_w + 1)))
+		return (NULL);
+	i = -1;
+	while (*s)
 	{
-		tab[cw] = (char*)malloc(sizeof(char) * (ft_word_size(str, c) + 1));
-		ft_write_word(str, &str, tab[cw], c);
-		cw++;
+		while (*s && *s == c)
+			s++;
+		if (*s && *s != c)
+			tab[++i] = ft_dup_word(s, c);
+		while (*s && *s != c)
+			s++;
 	}
-	tab[cw] = NULL;
+	tab[++i] = NULL;
 	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 15:55:27 by jplevy            #+#    #+#             */
-/*   Updated: 2016/01/15 19:14:24 by jplevy           ###   ########.fr       */
+/*   Updated: 2016/03/02 15:51:30 by jplevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ char			*ft_itoa(int n)
 	char	*ret;
 
 	size = ft_size(n) + ((n < 0) ? 1 : 0);
-	ret = ft_strnew(size);
+	if (!(ret = ft_strnew(size)))
+		return (NULL);
 	while (size > 0)
 	{
 		size--;

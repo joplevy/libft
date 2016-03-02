@@ -6,7 +6,7 @@
 /*   By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 17:11:19 by jplevy            #+#    #+#             */
-/*   Updated: 2016/01/11 19:32:45 by jplevy           ###   ########.fr       */
+/*   Updated: 2016/03/02 14:15:39 by jplevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (str1[i] == str2[i])
+		if (str1[i] != str2[i])
 			return (str1[i] - str2[i]);
 		i++;
 	}

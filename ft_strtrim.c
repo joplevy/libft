@@ -6,7 +6,7 @@
 /*   By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 11:51:19 by jplevy            #+#    #+#             */
-/*   Updated: 2016/01/13 12:02:09 by jplevy           ###   ########.fr       */
+/*   Updated: 2016/03/02 15:31:26 by jplevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strtrim(char const *s)
 	while (s[i] == '\n' || s[i] == ' ' || s[i] == '\t')
 		i++;
 	j = ft_strlen(s);
+	if (i == j)
+		return (ft_strdup(""));
 	while (s[j - 1] == '\n' || s[j - 1] == ' ' || s[j - 1] == '\t')
 		j--;
 	return (ft_strsub(s, i, j - i));

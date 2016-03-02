@@ -6,7 +6,7 @@
 /*   By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 13:43:20 by jplevy            #+#    #+#             */
-/*   Updated: 2016/01/07 13:53:15 by jplevy           ###   ########.fr       */
+/*   Updated: 2016/03/02 14:27:41 by jplevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	char	*cur;
 
-	i = ft_strlen(s);
-	while (s[i - 1] != (char)c && i > 0)
-		i--;
-	if (*s == (char)c)
-		return ((char *)s);
-	return (NULL);
+	cur = (char *)s + ft_strlen(s);
+	while (*cur != c)
+	{
+		if (cur == s)
+			return (NULL);
+		cur--;
+	}
+	return (cur);
 }

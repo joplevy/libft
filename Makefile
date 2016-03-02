@@ -6,7 +6,7 @@
 #    By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/04 14:21:43 by jplevy            #+#    #+#              #
-#    Updated: 2016/01/15 19:50:00 by jplevy           ###   ########.fr        #
+#    Updated: 2016/03/02 18:55:34 by jplevy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,10 @@ SRC_NAME = ft_bzero.c \
 		   ft_putstr_fd.c \
 		   ft_putendl_fd.c \
 		   ft_putnbr_fd.c \
+		   ft_lstnew.c \
+		   ft_lstdelone.c \
+		   ft_lstdel.c \
+		   ft_lstadd.c
 
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

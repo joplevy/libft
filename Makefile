@@ -6,7 +6,7 @@
 #    By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/04 14:21:43 by jplevy            #+#    #+#              #
-#    Updated: 2016/03/02 20:10:20 by jplevy           ###   ########.fr        #
+#    Updated: 2016/04/15 11:31:05 by joeyplevy        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,8 @@ SRC_NAME = ft_bzero.c \
 		   ft_lstdel.c \
 		   ft_lstadd.c \
 		   ft_lstiter.c \
-		   ft_lstmap.c
+		   ft_lstmap.c \
+		   ft_power.c
 
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

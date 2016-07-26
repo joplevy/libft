@@ -53,7 +53,9 @@ SRC_NAME = ft_bzero.c \
 		   ft_strequ.c \
 		   ft_strnequ.c \
 		   ft_strsub.c \
+		   ft_strsub_no_leaks.c \
 		   ft_strjoin.c \
+		   ft_strjoin_no_leaks.c \
 		   ft_strtrim.c \
 		   ft_strsplit.c \
 		   ft_itoa.c \
@@ -71,7 +73,8 @@ SRC_NAME = ft_bzero.c \
 		   ft_lstadd.c \
 		   ft_lstiter.c \
 		   ft_lstmap.c \
-		   ft_power.c
+		   ft_power.c \
+		   get_next_line.c
 
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

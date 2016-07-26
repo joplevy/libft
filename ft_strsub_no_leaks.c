@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_strsub_no_leaks.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joeyplevy <joeyplevy@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jplevy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/15 11:28:43 by joeyplevy         #+#    #+#             */
-/*   Updated: 2016/04/15 11:30:00 by joeyplevy        ###   ########.fr       */
+/*   Created: 2016/03/10 12:11:00 by jplevy            #+#    #+#             */
+/*   Updated: 2016/05/28 17:13:09 by joeyplevy        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-int		ft_power(int nb, int power)
+char	*ft_strsub_no_leaks(char const *s, unsigned int start, size_t len, \
+	char *tofree)
 {
-	if (power == 0)
-		return (1);
-	if (power < 0)
-		return (0);
-	if (power == 1)
-		return (nb);
-	if (power > 1)
-		nb = nb * ft_power(nb, power - 1);
-	return (nb);
+	char	*ret;
+
+	ret = ft_strsub(s, start, len);
+	if (tofree)
+		free(tofree);
+	return (ret);
 }

@@ -62,7 +62,10 @@ char				*ft_strmapi(char const *s, char(*f)(unsigned int, char));
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
+char				*ft_strsub_no_leaks(char const *s, unsigned int start, \
+					size_t len, char *tofree);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin_no_leaks(char *s1, char *s2, char *tofree);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
@@ -81,4 +84,5 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_power(int nb, int power);
+int					get_next_line(int const fd, char **line);
 #endif

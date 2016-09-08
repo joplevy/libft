@@ -6,7 +6,7 @@
 #    By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/04 14:21:43 by jplevy            #+#    #+#              #
-#    Updated: 2016/04/15 11:31:05 by joeyplevy        ###   ########.fr        #
+#    Updated: 2016/09/08 07:05:33 by jplevy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,14 @@ SRC_NAME = ft_bzero.c \
 		   ft_lstiter.c \
 		   ft_lstmap.c \
 		   ft_power.c \
-		   get_next_line.c
+		   get_next_line.c \
+		   ft_printf/ft_printf.c\
+		   ft_printf/get_args.c\
+		   ft_printf/ft_itoa_base.c\
+		   ft_printf/ft_number.c\
+		   ft_printf/flags.c \
+		   ft_printf/ft_wide_char.c \
+		   ft_printf/altnorme.c
 
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -86,10 +93,15 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME):
-	@$(CC) $(CFLAG) $(SRC_NAME)
+$(NAME): $(OBJ_NAME)
+	# @$(CC) $(CFLAG) $(SRC_NAME)
 	@$(AR) $(NAME) $(OBJ_NAME)
 	@$(RLIB) $(NAME)
+
+%.o: %.c
+	@echo $@
+	@$(CC) $(CFLAG) -o $@ -c $<
+	@echo "  Well done"
 
 clean:
 	@$(RM) $(OBJ_NAME)

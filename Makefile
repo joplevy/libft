@@ -82,7 +82,8 @@ SRC_NAME = ft_bzero.c \
 		   ft_printf/ft_number.c\
 		   ft_printf/flags.c \
 		   ft_printf/ft_wide_char.c \
-		   ft_printf/altnorme.c
+		   ft_printf/altnorme.c \
+		   ft_abs.c
 
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

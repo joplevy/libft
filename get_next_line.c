@@ -17,12 +17,15 @@ int		ft_indexof(char *str)
 {
 	int		i;
 
-	i = 0;
-	while (str[i] && str[i] != '\0')
+	if (str)
 	{
-		if (str[i] == '\n')
-			return (i);
-		i++;
+		i = 0;
+		while (str[i] && str[i] != '\0')
+		{
+			if (str[i] == '\n')
+				return (i);
+			i++;
+		}
 	}
 	return (-2);
 }
@@ -31,13 +34,17 @@ int		get_chars(char *buff, char **str)
 {
 	char	*tmp;
 
-	if (!(tmp = ft_strdup(*str)))
-		return (-1);
-	free(*str);
-	if (!(*str = ft_strjoin(tmp, buff)))
-		return (-1);
-	free(tmp);
-	free(buff);
+	if (*str)
+	{
+		if (!(tmp = ft_strdup(*str)))
+			return (-1);
+		free(*str);
+		if (!(*str = ft_strjoin(tmp, buff)))
+			return (-1);
+		free(tmp);
+	}
+	else
+		*str = ft_strdup(buff);
 	return (ft_indexof(*str));
 }
 
@@ -60,25 +67,24 @@ int		get_next_line(int const fd, char **line)
 {
 	int			i;
 	int			j;
-	static char	*str;
+	static char	*str = NULL;
 	char		*buffer;
 
 	if (fd < 0)
 		return (-1);
+	if ((j = ft_indexof(str)) != -2)
+		return (ft_result(line, &str, j));
 	if (!(buffer = ft_strnew(BUFF_SIZE)))
 		return (-1);
-	if (!(str))
-	{
-		if (!(str = ft_strnew(0)))
-			return (-1);
-	}
-	else if ((j = ft_indexof(str)) != -2)
-		return (ft_result(line, &str, j));
 	i = read(fd, buffer, BUFF_SIZE);
 	if (i == 0 && ft_strlen(str) == 0)
+	{
+		free(buffer);
 		return (0);
+	}
 	if ((j = get_chars(buffer, &str)) == -1 || i == -1)
 		return (-1);
+	free(buffer);
 	if (j == -2 && i != 0)
 		return (get_next_line(fd, line));
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_args.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joeyplevy <joeyplevy@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 17:47:13 by joeyplevy         #+#    #+#             */
-/*   Updated: 2017/05/11 18:04:11 by joeyplevy        ###   ########.fr       */
+/*   Updated: 2017/06/30 01:29:15 by jplevy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static t_parg	ft_newarg(char type, char *str)
 	ret.opt = (type == 'o') ? str + 1 : NULL;
 	ret.fd = (type == 'f') ? open((const char*)str, O_RDONLY) : 0;
 	ret.err = (type == 'f') ? errno : 0;
-	ret.str =  str;
+	ret.str = str;
 	ret.val = (type == 'i') ? ft_atoi(str) : 0;
 	return (ret);
 }
@@ -83,7 +83,7 @@ t_list			*ft_get_args(int ac, char **av, t_opt *tab, char elsetype)
 
 	i = 0;
 	ret = NULL;
-	while (++i < ac && (elsetype == 'i' ||  elsetype == 'f' || elsetype == 's'))
+	while (++i < ac && (elsetype == 'i' || elsetype == 'f' || elsetype == 's'))
 	{
 		if (av[i][0] == '-' && (opt = ft_match(av[i] + 1, tab)) >= 0)
 		{
@@ -91,7 +91,7 @@ t_list			*ft_get_args(int ac, char **av, t_opt *tab, char elsetype)
 			ft_lstadd_back(&ret, ft_lstnew(&arg, sizeof(t_parg)));
 			if ((int)(i + ft_strlen(tab[opt].args)) >= ac || \
 				!(ft_get_opt_args(av, &i, &ret, tab[opt])))
-				return(ft_lstfree(&ret, NULL));
+				return (ft_lstfree(&ret, NULL));
 		}
 		else
 		{

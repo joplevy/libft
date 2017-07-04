@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joeyplevy <joeyplevy@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jplevy <jplevy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:35:25 by jplevy            #+#    #+#             */
-/*   Updated: 2017/05/30 20:06:59 by joeyplevy        ###   ########.fr       */
+/*   Updated: 2017/06/30 19:58:55 by rvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,29 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef enum	e_type
+typedef enum		e_type
 {
 	file,
 	string,
 	number,
 	opt
-}				t_type;
+}					t_type;
 
-typedef struct	s_parg
+typedef struct		s_parg
 {
-	t_type	type;
-	char	*opt;
-	int		fd;
-	int		err;
-	char	*str;
-	int		val;
-}				t_parg;
+	t_type			type;
+	char			*opt;
+	int				fd;
+	int				err;
+	char			*str;
+	int				val;
+}					t_parg;
 
-typedef struct	s_opt
+typedef struct		s_opt
 {
-	char		*name;
-	char		*args;
-}				t_opt;
+	char			*name;
+	char			*args;
+}					t_opt;
 
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
@@ -112,13 +112,14 @@ int					ft_power(int nb, int power);
 int					get_next_line(int const fd, char **line);
 int					ft_printf(const char *format, ...);
 int					ft_abs(int i);
-void				*ft_lstfree(t_list **lst, void (*ft_free_node)(void *));
-void				ft_lstdelnode(t_list **lst, t_list *node, void (*f)(void *));
+void				*ft_lstfree(t_list **lst, void (*ft_free_node)(void **));
+void				ft_lstdelnode(t_list **lst, t_list *node, \
+						void (*f)(void *));
 t_list				*ft_get_args(int ac, char **av, t_opt *tab, char elsetype);
 /*
-** ft_get_args take the args a tab witch define each option name, ans argumants type
-** s for string, i for int, f for file, elsetype is a char that define the type of a 
-** default arg, it return a list witch content is t_parg* wich give you the type of an 
-** arg, and the value in the assigned data 
+** ft_get_args take the args a tab witch define each option name, ans argumants
+** type s for string, i for int, f for file, elsetype is a char that define the
+** type of a default arg, it return a list witch content is t_parg* wich give
+** you the type of an arg, and the value in the assigned data
 */
 #endif

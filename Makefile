@@ -72,6 +72,7 @@ SRC_NAME = ft_bzero.c \
 		   ft_lstdel.c \
 		   ft_lstadd.c \
 		   ft_lstadd_back.c \
+		   ft_lstpushback.c \
 		   ft_lstiter.c \
 		   ft_lstmap.c \
 		   ft_power.c \
